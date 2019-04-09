@@ -55,6 +55,7 @@ console.log(JSON.stringify(error, null, 2));
 }
 );
 
+	res.send('Documents inserted');
 
 
 });
