@@ -6,15 +6,13 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var foodsRouter = require('./routes/foods');
 
 // Connect to MarkLogic DB
 var marklogic = require('marklogic');
 var conn = require('./env.js').connection;
 var db = marklogic.createDatabaseClient(conn);
 var q = marklogic.queryBuilder;
-
-var foodsRouter = require('./routes/foods');
-
 
 var app = express();
 

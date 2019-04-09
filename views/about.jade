@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  h1= title
+  p About page
+
+  // Wrapper
+  #wrapper
+
+      // About
+      #foodInfo
+          h2 About Info
+          p
+              strong Name:
+              |  <span id='foodInfoName'></span>
+              br
+              strong Price:
+              |  <span id='foodInfoPrice'></span>
+              br
+              strong Popularity:
+              |  <span id='foodInfoPop'></span>
+      //  /FOOD INFO
+
+
+      // FOOD LIST
+      h2 About List
+      #foodList
+          table
+              thead
+                  th FoodName
+                  th Price
+                  th Delete?
+              tbody
+      //  /FOOD LIST
+
+  //  /WRAPPER
+
+
+
+

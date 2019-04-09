@@ -1,0 +1,27 @@
+extends layout
+
+block content
+	h1= title
+	p Food Glorious Food
+
+	form(name="add-food" action="/foods/added" method="post")
+		div.input
+			span.label Title
+			input(type="text", name="title")
+		div.input
+			span.label FoodName
+			input(type="text", name="foodname")
+		div.input
+			span.label Price
+			input(type="text", name="foodprice")
+		div.input
+			span.label Popularity
+			input(type="text", name="foodpop")
+		div.input
+			span.label Description
+			textarea(name="description", cols="40", rows="5")
+		div.actions
+			input(type="submit", value="add")
+
+
+
