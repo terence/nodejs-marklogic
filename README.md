@@ -10,9 +10,12 @@
 - npm start
 - Goto http://localhost:3000
 
-
 ## Data
 - Docs and data in /data directory
+
+
+## Scripts
+- /scripts has standalone scripts interacting with ML
 
 
 ## Reference
