@@ -1,4 +1,6 @@
 
+
+// Marklogic Database Connection
 var dev =  {
   database: "terencedb-1",     // Each connection can specify its own database
   host: "localhost",         // The host against which queries will be run

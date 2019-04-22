@@ -1,5 +1,9 @@
 # NodeJS + Express + Marklogic
 
+- $ npm start
+- http://localhost:3000
+
+
 ## Download Dependencies
 - npm install express
 - npm install marklogic
