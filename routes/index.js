@@ -5,7 +5,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
 //  res.send("Index Page");
-	res.render('index', { title: 'Express' });
+	res.render('index', { title: 'School Admin App' });
 
 });
 
@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 // About
 router.get('/about', function(req, res, next) {
 //	res.send("About this site");
-	res.render('about', { title: 'Express' });
+	res.render('about', { title: 'About Page' });
 });
 
 

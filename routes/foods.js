@@ -88,7 +88,7 @@ router.get('/read', function (req, res, next) {
 							//console.log(JSON.stringify(doc));
 
 			
-			res.render ('foods/show', {
+			res.render ('foods/read', {
 				name: 'a static title',
 //			name: doc.content.name,
 				price: doc.content.price
@@ -109,9 +109,53 @@ router.get('/read', function (req, res, next) {
 
 
 
+router.get('/edit', function (req, res, next) {
+  var db = req.db;
+  var q = req.q;
+  var query = req.query;
+  console.log("Hello Edit");
+
+//  var uri = ['/gs/bluebird.json']
+  console.log(query);
+//  console.log(req);
+//  console.log(req.params);
+  console.log(req.query.uri);
+
+  db.documents.read(req.query.uri)
+    .result().then(function(doc) {
+      doc.forEach(function(doc) {
+        console.log('Cat:' + doc.category);
+        console.log('Content:' + doc.content);
+        console.log('Food Name:' + doc.content.name);
+        console.log('Food Price:' + doc.content.price);
+              //console.log(JSON.stringify(doc));
+
+
+      res.render ('foods/edit', {
+        name: 'a static title',
+//      name: doc.content.name,
+        price: doc.content.price
+      });
+
+      });
+
+    console.log(doc);
+    //console.log(doc.category);
+//    res.send(doc);
+
+
+
+  });
+
+});
+
+
+
+
+
 
 /* ======================
- * Retrieve Doc
+ * Retrieve Dummy Doc
  *
  */
 
@@ -172,37 +216,27 @@ router.get('/listapi', function(req, res, next) {
 });
 
 
-
-
-
-
-
 /* ===============================================================
- * POST new food.
- * - TBD
- * */
-router.post('/foodadd', function(req, res, next) {
+ * FOOD: List
+ *
+ *
+ */
+router.get('/list', function(req, res, next) {
   var db = req.db;
-  var foodName = req.body.foodname;
-  var foodPrice = req.body.foodprice;
-  var foodPop = req.body.foodpop;
+  var q = req.q;
 
-  db.documents.write({
-    uri: '/menu/entree/' + foodName + '.json',
-    collections: ['entree'],
-    contentType: 'application/json',
-    content: {
-      name: foodName,
-      popularity: foodPop,
-      price: foodPrice
-    }
-  }).
-  result(function(err, result){
-    res.send(
-      (err === null) ? {msg: ''} : {msg: err }
-    );
+  db.documents.query(
+    q.where(
+      q.collection('entree')
+    )
+  ).
+  result(function(records){
+    res.json(records);
   });
 });
+
+
+
 
 
 
@@ -241,16 +275,13 @@ router.post('/added', function(req, res, next) {
     }
   );
 
-
-
-
 //	console.log(req.body.title);
 	console.log(req.body.description);
 
 
 //	res.redirect('/foods/new');			
 //	res.redirect('/foods/read?uri' +  document.uri);			
-	//res.send('Page Posted');
+//	res.send('Page Posted');
 
 
 });

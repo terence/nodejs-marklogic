@@ -2,7 +2,7 @@ extends ../layout
 
 block content
 	h1.
-		#{title}
+		Food New #{uri}
 	p Food Glorious Food
 
 	form#formAddFood(name="add-food" method="post" action="/foods/added")
@@ -24,5 +24,14 @@ block content
 		div.actions
 			input#buttonSubmit(type="submit", value="add")
 
+
+	#about
+		h2 Menu
+		a(href="/") Front Page
+		br
+		a(href="/foods/listapi") Food List API
+		br
+		a(href="/foods/new") Create New Food
+		br
 
 

@@ -1,4 +1,18 @@
 
+extends ../layout
 
+block content
+  h1.
+    Food Edit #{uri}
+  p Name: #{name}
+  p Price: #{price}
 
-Edit Food
+  #about
+    h2 Menu
+    a(href="/") Front Page
+    br
+    a(href="/foods/listapi") Food List API
+    br
+    a(href="/foods/new") Create New Food
+    br
+

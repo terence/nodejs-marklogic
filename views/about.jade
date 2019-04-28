@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  p About page
+  p The School Admin applicaiton is focused on administering school information
 
   // Wrapper
   #wrapper
@@ -10,30 +10,23 @@ block content
       // About
       #foodInfo
           h2 About Info
-          p
-              strong Name:
-              |  <span id='foodInfoName'></span>
-              br
-              strong Price:
-              |  <span id='foodInfoPrice'></span>
-              br
-              strong Popularity:
-              |  <span id='foodInfoPop'></span>
-      //  /FOOD INFO
+          p This is the working hard....
+
+  // Wrapper
 
 
-      // FOOD LIST
-      h2 About List
-      #foodList
-          table
-              thead
-                  th FoodName
-                  th Price
-                  th Delete?
-              tbody
-      //  /FOOD LIST
 
-  //  /WRAPPER
+  #about
+    h2 Menu
+    a(href="/") Front Page
+    br
+    a(href="/foods/listapi") Food List API
+    br
+    a(href="/foods/new") Create New Food
+    br
+
+
+
 
 
 
