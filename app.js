@@ -4,19 +4,19 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var foodsRouter = require('./routes/foods');
 
-// Connect to MarkLogic DB
+// MARKLOGIC: DB Setup
 var marklogic = require('marklogic');
 var conn = require('./env.js').connection;
 var db = marklogic.createDatabaseClient(conn);
 var q = marklogic.queryBuilder;
 
-var app = express();
 
-// view engine setup
+// EXPRESS: Config init
+var app = express();
+app.set ('port', 3000);
+
+// EXPRESS: View engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -39,10 +39,20 @@ app.use(function(req, res, next){
   next();
 });
 
+// EXPRESS: Model init
 
+
+
+// EXPRESS: Routers init
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var foodsRouter = require('./routes/foods');
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/foods', foodsRouter);
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

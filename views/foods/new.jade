@@ -1,16 +1,17 @@
-extends layout
+extends ../layout
 
 block content
-	h1= title
+	h1.
+		#{title}
 	p Food Glorious Food
 
-	form(name="add-food" action="/foods/added" method="post")
+	form#formAddFood(name="add-food" method="post" action="/foods/added")
 		div.input
 			span.label Title
-			input(type="text", name="title")
+			input#inputTitle(type="text", name="title")
 		div.input
 			span.label FoodName
-			input(type="text", name="foodname")
+			input#inputFoodName(type="text", name="foodname")
 		div.input
 			span.label Price
 			input(type="text", name="foodprice")
@@ -21,7 +22,7 @@ block content
 			span.label Description
 			textarea(name="description", cols="40", rows="5")
 		div.actions
-			input(type="submit", value="add")
+			input#buttonSubmit(type="submit", value="add")
 
 
 

@@ -1,0 +1,18 @@
+
+extends ../layout
+
+block content
+  h1.
+    Food Show #{uri}
+  p Name: #{name}
+  p Price: #{price}
+
+  #about
+    h2 Menu
+    a(href="/") Front Page
+    br
+    a(href="/foods/listapi") Food List API
+    br
+    a(href="/foods/new") Create New Food
+    br
+
