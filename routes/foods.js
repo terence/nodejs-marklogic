@@ -2,15 +2,61 @@ var express = require('express');
 var router = express.Router();
 
 
+// Load Models
+let Food = require('../models/food');
+
+
+
 /* ===============================================================
- * FOOD: Create New
- *
+ * FOOD: Add
+ * - 2 functions - add, post
  * */
-router.get('/new', function(req, res, next) {
+router.get('/add', function(req, res, next) {
 //  res.send('foods index');
-  res.render('foods/new', { title: 'Food glorious food'});
+	res.render('foods/add', {
+		title: 'Food glorious food'
+	});
+});
+
+
+router.post('/add', function(req, res, next) {
+  var db = req.db;
+  var foodName = req.body.foodname;
+  var foodPrice = req.body.foodprice;
+  var foodPop = req.body.foodpop;
+
+  db.documents.write({
+    uri: '/menu/entree/' + foodName + '.json',
+    collections: ['entree'],
+    contentType: 'application/json',
+    content: {
+      name: foodName,
+      popularity: foodPop,
+      price: foodPrice
+    }	
+	}).result(
+    function(response) {
+      console.log('Loaded the following documents:');
+      response.documents.forEach( function(document) {
+        console.log(' ' + document.uri);
+      });
+			res.redirect('/foods/read?uri=' + response.documents[0].uri)
+		
+		},
+    function(error) {
+      console.log('error here');
+      console.log(JSON.stringify(error, null, 2));
+    }
+  );
+
+	console.log(req.body.name);
+
+//	res.redirect('/foods/add');			
+//	res.redirect('/foods/read?uri' +  document.uri);			
 
 });
+
+
 
 
 
@@ -289,50 +335,13 @@ router.get('/search', function(req, res, next) {
 
 
 
-/* ===============================================================
- * FOOD: New Response
- *
- */
-router.post('/added', function(req, res, next) {
-  var db = req.db;
-  var foodName = req.body.foodname;
-  var foodPrice = req.body.foodprice;
-  var foodPop = req.body.foodpop;
-
-  db.documents.write({
-    uri: '/menu/entree/' + foodName + '.json',
-    collections: ['entree'],
-    contentType: 'application/json',
-    content: {
-      name: foodName,
-      popularity: foodPop,
-      price: foodPrice
-    }	
-	}).result(
-    function(response) {
-      console.log('Loaded the following documents:');
-      response.documents.forEach( function(document) {
-        console.log(' ' + document.uri);
-      });
-			res.redirect('/foods/read?uri=' + response.documents[0].uri)
-		
-		},
-    function(error) {
-      console.log('error here');
-      console.log(JSON.stringify(error, null, 2));
-    }
-  );
-
-//	console.log(req.body.title);
-	console.log(req.body.description);
 
 
-//	res.redirect('/foods/new');			
-//	res.redirect('/foods/read?uri' +  document.uri);			
-//	res.send('Page Posted');
 
 
-});
+
+
+
 
 
 /* ===============================================================

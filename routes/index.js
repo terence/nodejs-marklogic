@@ -19,5 +19,23 @@ router.get('/about', function(req, res, next) {
 
 
 
+/* =============================
+ * LOGIN: Signup
+ *
+ *
+ * */
+router.get('/signup', function(req, res, next) {
+//  res.send("Index Page");
+	res.render('index', { title: 'School Admin App' });
+
+});
+
+
+
+
+
+
+
+
 
 module.exports = router;

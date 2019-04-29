@@ -39,8 +39,9 @@ app.use(function(req, res, next){
   next();
 });
 
-// EXPRESS: Model init
 
+// EXPRESS: Model init
+var Users = [];
 
 
 // EXPRESS: Routers init
@@ -50,8 +51,6 @@ var foodsRouter = require('./routes/foods');
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/foods', foodsRouter);
-
-
 
 
 // catch 404 and forward to error handler
