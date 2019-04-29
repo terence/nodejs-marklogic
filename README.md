@@ -22,6 +22,10 @@
 - /scripts has standalone scripts interacting with ML
 
 
+## Installation
+- install bower components
+- npm install -g bower
+
 ## Reference
 - https://wiki.glitchdata.com/index.php/MarkLogic_Usage
 

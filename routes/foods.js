@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+//var sleep = require('sleep');
 
 // Load Models
 let Food = require('../models/food');
@@ -251,7 +251,8 @@ router.get ('/delete', function (req, res, next) {
 	db.documents.remove(req.query.uri)
 //	db.documents.remove('/gs/aardvark.json')
 
-
+//  Create delay for ML to delete
+//  sleep(1000)
 	res.redirect('/foods/list')
 
 //	res.send('Document deleted')
@@ -295,12 +296,12 @@ router.get('/list', function(req, res, next) {
   ).
   result(function(records){
     //res.json(records);
-    res.render('foods/list', {
+		console.log(records)			
+		res.render('foods/list', {
       title: 'All my Food',
       "blobs" : records
-    });
+		});
 	});
-
 });
 
 
