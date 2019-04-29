@@ -1,21 +1,44 @@
 extends ../layout
 
 block content
-    h1.
-         #{title}
-    ul
-        - each blob, i in blobs
-            li
-                = blob.name
-                = blob.badge
-                = blob.dob
-                = blob.isloved
-                = blob._id
-                form(action='/blobs/#{blob._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
-                    input(type='hidden',value='DELETE',name='_method')
-                    button(type='submit').
-                        Delete
-                p 
-                    a(href='/blobs/#{blob._id}/edit') Edit
-                p
-                    a(href='/blobs/#{blob._id}') Show
+	h1.
+		#{title}
+	ul
+		- each blob, i in blobs
+			li
+				= blob.uri
+				= blob.badge
+				= blob.dob
+				form(action='/foods/delete?uri=#{blob.uri}',method='post',enctype='application/x-www-form-urlencoded')
+					input(type='hidden',value='DELETE',name='_method')
+					button(type='submit').
+						Delete
+				p
+					a(href='/foods/read?uri=#{blob.uri}') Show
+				p
+					a(href='/foods/edit?uri=#{blob.uri}') Edit
+				p
+					a(href='/foods/delete?uri=#{blob.uri}') Delete
+
+	#about
+		h2 About
+			a(href="/about") About
+			br
+			a(href="/foods/list") Food List
+			br
+			a(href="/foods/listapi") Food List API
+			br
+			a(href="/foods/new") Create New Food
+			br
+
+	// FOOD SEARCH
+	#searchFood
+		h2 Food Search
+		fieldSet
+			input#inputFoodSearch(type='text', placeholder='onion, tacos, SF')
+			br
+			button#btnSearchFood Search Food
+		strong Search Result:
+		p
+	// /FOOD SEARCH
+
