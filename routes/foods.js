@@ -355,7 +355,7 @@ router.get('/search', function(req, res, next) {
  * FOOD: Edit Response
  *
  */
-router.post('/update', function(req, res, next) {
+router.post('/edit', function(req, res, next) {
   var db = req.db;
   var foodName = req.body.foodname;
   var foodPrice = req.body.foodprice;
