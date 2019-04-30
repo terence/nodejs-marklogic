@@ -226,6 +226,15 @@ i
 });
 
 
+function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
+}
+
+
 
 /* ========================
  * FOOD: Delete a Doc
@@ -233,26 +242,23 @@ i
  */
 
 router.get ('/delete', function (req, res, next) {
-
   var db = req.db;
   var q = req.q;
   var query = req.query;
-  console.log("Hello Edit");
+  console.log("Delete Started");
 
-//  var uri = ['/gs/bluebird.json']
   console.log(query);
-//  console.log(req);
-//  console.log(req.params);
+  // console.log(req);
+  // console.log(req.params);
   console.log(req.query.uri);
 				
 
-//TODO: Check permissions to delete
-
+  //TODO: Check permissions to delete
 	db.documents.remove(req.query.uri)
-//	db.documents.remove('/gs/aardvark.json')
+  console.log("Deleted:"+req.query.uri);
 
-//  Create delay for ML to delete
-//  sleep(1000)
+  //  Create delay for ML to delete
+  //	wait(10000) 
 	res.redirect('/foods/list')
 
 //	res.send('Document deleted')
