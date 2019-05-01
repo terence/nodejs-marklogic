@@ -12,7 +12,7 @@ var dev =  {
 
 var test =  {
   database: "terencedb-1",     // Each connection can specify its own database
-  host: "odh-console.dev.nsw.education",         // The host against which queries will be run
+  host: "xxx.defence",         // The host against which queries will be run
   port: 8000,                // By default port 8000 accepts Client API requests
   user: "terence.chia",          // A user with at least the rest-writer role
   password: "password",  // Probably not your password
