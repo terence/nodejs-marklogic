@@ -257,9 +257,20 @@ router.get ('/delete', function (req, res, next) {
 	db.documents.remove(req.query.uri)
   console.log("Deleted:"+req.query.uri);
 
+	db.documents.remove(req.query.uri).result(
+		function(response) {
+			console.log(JSON.stringify(response));
+			res.redirect('/foods/list');
+		}
+	);
+
+
+
+
+
   //  Create delay for ML to delete
   //	wait(10000) 
-	res.redirect('/foods/list')
+	//res.redirect('/foods/list')
 
 //	res.send('Document deleted')
 });
@@ -298,7 +309,11 @@ router.get('/list', function(req, res, next) {
   db.documents.query(
     q.where(
       q.collection('entree')
-    )
+		)
+//		.orderBy(
+//			q.sort('uri')
+//		)
+//		.slice(0,5)
   ).
   result(function(records){
     //res.json(records);

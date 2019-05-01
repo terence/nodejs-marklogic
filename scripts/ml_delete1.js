@@ -6,8 +6,10 @@
 
 
 'use strict';
-
 var marklogic = require("marklogic")
+var connection = require('../env.js').connection
+
+
 
 var connInfo =  {
                   host: 'localhost',

@@ -8,17 +8,9 @@
 'use strict';
 
 var marklogic = require("marklogic")
+var conn = require('../env.js').connection
 
-var connInfo =  {
-                  host: 'localhost',
-                  port: 8000,
-                  user: 'admin',
-                  password: 'password',
-									database: "terencedb-1"
-								};
-
-
-var dbClient = marklogic.createDatabaseClient(connInfo);
+var dbClient = marklogic.createDatabaseClient(conn);
 
 var uri = "/recipes/recipe1.json";
 var docData = {
@@ -73,8 +65,4 @@ function(error) {
 );
 
 
-
-
-
-
-console.log("Hello world");
+console.log("Document Patched");

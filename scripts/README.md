@@ -11,4 +11,8 @@ Scripts for NodeJS and Marklogic
 - BatchLoad  1
 - QBE 1
 
+## References
+- https://github.com/marklogic/node-client-api/tree/master/examples
+
+
 
